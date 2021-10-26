@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlogrestService } from '../blogrest.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,14 @@ export class LoginComponent implements OnInit {
     this.blogrest.login(this.user, this.pass).subscribe(
       datos=>{
         console.log(datos);
-        this.rt.navigate(['inicio']);    
+        //this.blogrest.setCuenta(datos['user']['user']);
+        this.rt.navigate(['inicio']); 
+        this.msgbox.success("Bienvenido :3")
       },
-      error => {console.log(error)});
+      error => {
+        console.log(error)
+        this.msgbox.error("No se ha podido iniciar sesion")
+      });
   }
 //  respuesta(datos:any){
 //    console.log(datos['auth']);
@@ -29,7 +35,8 @@ export class LoginComponent implements OnInit {
 //    console.log(error);
 //  }
   
-  constructor(private rt: Router, private blogrest: BlogrestService) { }
+  constructor(private rt: Router, private blogrest: BlogrestService, 
+    private msgbox: ToastrService) { }
 
   ngOnInit(): void {
   }

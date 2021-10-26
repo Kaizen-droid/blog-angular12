@@ -7,6 +7,23 @@ const URL:string = "http://localhost/blogrest/public/";
   providedIn: 'root'
 })
 export class BlogrestService {
+  private cuenta={user:'', nombre:'', rol:'', token:''};
+
+  setCuenta(user:string, nombre:string, rol:string, token:string){
+    this.cuenta.user = user;
+    this.cuenta.nombre = nombre;
+    this.cuenta.rol = rol;
+    this.cuenta.token = token;
+    //Permite almacenar datos en el navegador
+    localStorage.setItem('user', user)
+    localStorage.setItem('nombre', nombre)
+    localStorage.setItem('rol', rol)
+    localStorage.setItem('token', token)
+  }
+
+  getCuenta(){
+    //Pa la otra clase
+  }
 
   constructor(private http: HttpClient) { }
 
