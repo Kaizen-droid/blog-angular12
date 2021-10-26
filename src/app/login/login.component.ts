@@ -14,20 +14,22 @@ export class LoginComponent implements OnInit {
   pass="";
 
   login(){
-    this.blogrest.login(this.user, this.pass).subscribe(resp =>{
-      console.log(resp);
-      if(resp['auth']){
-        this.router.navigate(['/inicio']);
-      }else{
-        alert("Error de usuario o contraseña")
-      }
-    }, error =>{
-      console.log(error);
-    })
-
+    this.blogrest.login(this.user, this.pass).subscribe(
+      datos=>{
+        console.log(datos);
+        this.rt.navigate(['inicio']);    
+      },
+      error => {console.log(error)});
   }
-
-  constructor(private router: Router, private blogrest: BlogrestService) { }
+//  respuesta(datos:any){
+//    console.log(datos['auth']);
+//    this.rt.navigate(['inicio']);
+//  }
+//  respuestaError(error:any){
+//    console.log(error);
+//  }
+  
+  constructor(private rt: Router, private blogrest: BlogrestService) { }
 
   ngOnInit(): void {
   }
