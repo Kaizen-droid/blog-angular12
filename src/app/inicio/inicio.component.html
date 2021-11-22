@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="container">
     <div class="row">
         <div class="col"></div>
@@ -12,12 +13,12 @@
                             <div class="input-group-text"><i class="bi bi-person-circle"></i></div>
                         </div>
                         <input type="text" class="form-control" id="topic" 
-                        placeholder="Nombre del tema">
+                        placeholder="Nombre del tema" [(ngModel)]="tema">
                     </div>
                     
                 </div>
                 <div class="card-footer text-center">
-                    <button type="button" class="btn btn-primary" id="agregar">Agregar</button>
+                    <button (click)="agregar()" type="button" class="btn btn-primary" id="agregar">Agregar</button>
                 </div>
             </div>
         </div>
@@ -35,9 +36,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let topic of topicos">
+                        <td>{{topic.id}}</td>
+                        <td>{{topic.tema}}</td>
                         <td></td>
                     </tr>
                 </tbody>

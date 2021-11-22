@@ -22,13 +22,29 @@ export class BlogrestService {
   }
 
   getCuenta(){
-    //Pa la otra clase
+    //this.cuenta.user = localStorage.getItem('user');
+    return this.cuenta;
   }
 
   constructor(private http: HttpClient) { }
 
   login(user:string, pass:string){
     return this.http.get(URL + "login/" + user + "/" + pass)
+  }
+
+  topics(){
+    let headers = new HttpHeaders;
+    headers = headers.append('Authorization', this.cuenta.token);
+    console.log(this.cuenta.token)
+    return this.http.get(URL + "topicos", {headers:headers});
+  }
+
+  addTopic(tema:string){
+    let headers = new HttpHeaders;
+    let form = new FormData;
+    form.append('tema', tema);
+    headers = headers.append('Authorization', this.cuenta.token);
+    return this.http.post(URL + "topicos", form, {headers:headers});
   }
 
 }

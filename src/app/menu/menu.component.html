@@ -13,11 +13,11 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item"><a class="nav-link" >Inicio</a></li>
             <li class="nav-item"><a class="nav-link" >Mensajes</a></li>
-            <li class="nav-item"><a class="nav-link" >Usuarios</a></li>
+            <li class="nav-item" *ngIf="rol=='A'"><a class="nav-link" >Usuarios</a></li>
             <li class="nav-item"><a class="nav-link" href="">Salir</a></li>
         </ul>
-        <span class="navbar-text border border-dark rounded pl-2 pr-2">
-            
+        <span class="navbar-text border border-light rounded pl-2 pr-2">
+            &nbsp;{{user}}&nbsp;
         </span>
     </div>
 
